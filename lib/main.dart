@@ -1,4 +1,5 @@
 import 'package:bloc_example/logic/cubits/counter_cubit/counter_cubit.dart';
+import 'package:bloc_example/logic/cubits/internet_cubit/internet_cubit.dart';
 import 'package:bloc_example/presentation/route/app_route.dart';
 import 'package:bloc_example/presentation/screens/first_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CounterCubit(),
+      create: (context) => CounterCubit(internetCubit: InternetCubit()),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
