@@ -1,18 +1,17 @@
 import 'package:bloc_example/logic/cubits/counter_cubit/counter_cubit.dart';
-import 'package:bloc_example/presentation/route/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FirstScreen extends StatefulWidget {
-  const FirstScreen({Key? key, required this.title}) : super(key: key);
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<FirstScreen> createState() => _FirstScreenState();
+  State<ThirdScreen> createState() => _ThirdScreenState();
 }
 
-class _FirstScreenState extends State<FirstScreen> {
+class _ThirdScreenState extends State<ThirdScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,9 +75,9 @@ class _FirstScreenState extends State<FirstScreen> {
               ],
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, secondScreenRoute),
-              child: const Text('Go to second screen'),
-            )
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                    context, '/', (_) => false),
+                child: const Text('Go to first screen'))
           ],
         ),
       ),

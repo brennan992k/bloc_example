@@ -1,4 +1,5 @@
 import 'package:bloc_example/logic/cubits/counter_cubit/counter_cubit.dart';
+import 'package:bloc_example/presentation/route/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -75,8 +76,8 @@ class _SecondScreenState extends State<SecondScreen> {
               ],
             ),
             ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Go back'))
+                onPressed: () => Navigator.pushNamed(context, thirdScreenRoute),
+                child: const Text('Go to third screen'))
           ],
         ),
       ),
