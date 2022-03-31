@@ -1,4 +1,5 @@
 import 'package:bloc_example/logic/cubits/counter_cubit/counter_cubit.dart';
+import 'package:bloc_example/logic/cubits/internet_cubit/internet_cubit.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -7,7 +8,7 @@ void main() {
     late CounterCubit counterCubit;
 
     setUp(() {
-      counterCubit = CounterCubit();
+      counterCubit = CounterCubit(internetCubit: InternetCubit());
     });
 
     tearDown(() {

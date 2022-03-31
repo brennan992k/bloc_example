@@ -6,26 +6,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterCubit(internetCubit: InternetCubit()),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const FirstScreen(title: 'Screen 1'),
-        initialRoute: firstScreenRoute,
-        onGenerateRoute: (settings) =>
-            AppRouter.onGenerateRoute(context, settings),
-      ),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => InternetCubit(),
+          ),
+          BlocProvider(
+              create: (context) => CounterCubit(
+                  internetCubit: BlocProvider.of<InternetCubit>(context))),
+        ],
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const FirstScreen(title: 'Screen 1'),
+          initialRoute: firstScreenRoute,
+          onGenerateRoute: (settings) =>
+              AppRouter.onGenerateRoute(context, settings),
+        ));
   }
 }

@@ -49,19 +49,19 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 style: Theme.of(context).textTheme.headline4,
               );
             }, listener: (context, state) {
-              if (state.isIncrement == true) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('INCREMENT ${state.counter}'),
-                    duration: const Duration(microseconds: 10),
-                  ),
-                );
-              } else if (state.isIncrement == false) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('DECREMENT ${state.counter}'),
-                  duration: const Duration(microseconds: 10),
-                ));
-              }
+              // if (state.isIncrement == true) {
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     SnackBar(
+              //       content: Text('INCREMENT ${state.counter}'),
+              //       duration: const Duration(microseconds: 10),
+              //     ),
+              //   );
+              // } else if (state.isIncrement == false) {
+              //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              //     content: Text('DECREMENT ${state.counter}'),
+              //     duration: const Duration(microseconds: 10),
+              //   ));
+              // }
             }),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

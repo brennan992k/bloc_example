@@ -1,4 +1,5 @@
 import 'package:bloc_example/logic/cubits/counter_cubit/counter_cubit.dart';
+import 'package:bloc_example/logic/cubits/internet_cubit/internet_cubit.dart';
 import 'package:bloc_example/presentation/route/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,25 +45,58 @@ class _FirstScreenState extends State<FirstScreen> {
             //     style: Theme.of(context).textTheme.headline4,
             //   );
             // }),
+            BlocConsumer<InternetCubit, InternetState>(
+                builder: (context, state) {
+              if (state is InternetDisconnected) {
+                return Text(
+                  'Disconnected',
+                  style: Theme.of(context).textTheme.headline4,
+                );
+              }
+              if (state is InternetConnected) {
+                return Text(
+                  'Connected',
+                  style: Theme.of(context).textTheme.headline4,
+                );
+              }
+              return Text(
+                'Connectting',
+                style: Theme.of(context).textTheme.headline4,
+              );
+            }, listener: (context, state) {
+              // if (state.isIncrement == true) {
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     SnackBar(
+              //       content: Text('INCREMENT ${state.counter}'),
+              //       duration: const Duration(microseconds: 10),
+              //     ),
+              //   );
+              // } else if (state.isIncrement == false) {
+              //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              //     content: Text('DECREMENT ${state.counter}'),
+              //     duration: const Duration(microseconds: 10),
+              //   ));
+              // }
+            }),
             BlocConsumer<CounterCubit, CounterState>(builder: (context, state) {
               return Text(
                 '${state.counter}',
                 style: Theme.of(context).textTheme.headline4,
               );
             }, listener: (context, state) {
-              if (state.isIncrement == true) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('INCREMENT ${state.counter}'),
-                    duration: const Duration(microseconds: 10),
-                  ),
-                );
-              } else if (state.isIncrement == false) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('DECREMENT ${state.counter}'),
-                  duration: const Duration(microseconds: 10),
-                ));
-              }
+              // if (state.isIncrement == true) {
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     SnackBar(
+              //       content: Text('INCREMENT ${state.counter}'),
+              //       duration: const Duration(microseconds: 10),
+              //     ),
+              //   );
+              // } else if (state.isIncrement == false) {
+              //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              //     content: Text('DECREMENT ${state.counter}'),
+              //     duration: const Duration(microseconds: 10),
+              //   ));
+              // }
             }),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

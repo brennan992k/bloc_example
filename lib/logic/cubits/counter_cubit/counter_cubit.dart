@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:bloc_example/logic/constants/internet_type.dart';
 import 'package:bloc_example/logic/cubits/internet_cubit/internet_cubit.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -15,11 +14,9 @@ class CounterCubit extends Cubit<CounterState> {
   CounterCubit({required this.internetCubit})
       : super(CounterInitial(counter: 0)) {
     internetSub = internetCubit.stream.listen((event) {
-      print(event);
-      if (event == InternetDisconnected()) {
+      if (event is InternetDisconnected) {
         decrement();
-      } else if (event == InternetConnected(InternetType.wifi) ||
-          event == InternetConnected(InternetType.mobile)) {
+      } else if (event is InternetConnected) {
         increment();
       }
     });
