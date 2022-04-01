@@ -19,7 +19,8 @@ class InternetCubit extends Cubit<InternetState> {
   _updateConnectionStatus(ConnectivityResult result) {
     switch (result) {
       case ConnectivityResult.wifi:
-        emit(InternetConnected(InternetType.wifi));
+       
+       
         break;
       case ConnectivityResult.mobile:
         emit(InternetConnected(InternetType.mobile));
